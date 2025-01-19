@@ -58,7 +58,10 @@ public class AccountsServiceImpl implements AccountsService {
 
         logger.info("Account found with id: {}", account.getId());
 
-        return new GetAccountInfoResponse(account.getId(), account.getDocumentNumber());
+        return new GetAccountInfoResponse.Builder()
+                .setAccountId(account.getId())
+                .setDocumentNumber(account.getDocumentNumber())
+                .build();
     }
 
     private static void validateDocumentNumber(String documentNumber) {
