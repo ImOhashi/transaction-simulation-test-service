@@ -1,12 +1,16 @@
 package com.ohashi.transaction_simulation_test_service.domain.entities;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceCreator;
 
 import java.util.List;
 
 @Entity
 @Table(name = "accounts")
 public class Accounts {
+
+    public Accounts() {
+    }
 
     private Accounts(Builder builder) {
         this.documentNumber = builder.documentNumber;
@@ -32,6 +36,14 @@ public class Accounts {
             orphanRemoval = true
     )
     private List<Transactions> transactions;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
 
     public static class Builder {
         private String documentNumber;

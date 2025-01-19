@@ -1,8 +1,10 @@
 package com.ohashi.transaction_simulation_test_service.domain.services.impl;
 
 import com.ohashi.transaction_simulation_test_service.application.dtos.requests.CreateAccountDto;
+import com.ohashi.transaction_simulation_test_service.application.dtos.responses.GetAccountInfoResponse;
 import com.ohashi.transaction_simulation_test_service.domain.entities.Accounts;
 import com.ohashi.transaction_simulation_test_service.domain.exceptions.AccountAlreadyExistsException;
+import com.ohashi.transaction_simulation_test_service.domain.exceptions.AccountNotFoundException;
 import com.ohashi.transaction_simulation_test_service.domain.exceptions.InvalidDocumentNumberException;
 import com.ohashi.transaction_simulation_test_service.domain.services.AccountsService;
 import com.ohashi.transaction_simulation_test_service.domain.utils.CpfValidator;
@@ -25,6 +27,7 @@ public class AccountsServiceImpl implements AccountsService {
     @Override
     public void createAccount(CreateAccountDto createAccountDto) {
         logger.info("Attempting to create account with document number: {}", createAccountDto.documentNumber());
+
         accountsRepository.findByDocumentNumber(createAccountDto.documentNumber()).ifPresentOrElse(account -> {
             logger.error("Account with document number {} already exists", createAccountDto.documentNumber());
             throw new AccountAlreadyExistsException("Account with document number " + createAccountDto.documentNumber() + " already exists");
@@ -41,6 +44,21 @@ public class AccountsServiceImpl implements AccountsService {
 
             logger.info("Account created with document number: {}", createAccountDto.documentNumber());
         });
+    }
+
+    @Override
+    public GetAccountInfoResponse getAccountInfo(Integer id) {
+        logger.info("Fetching account info for id: {}", id);
+
+        var account = accountsRepository.findById(id)
+                .orElseThrow(() -> {
+                    logger.error("Account with id: {} not found", id);
+                    return new AccountNotFoundException("Account with ID " + id + " not found");
+                });
+
+        logger.info("Account found with id: {}", account.getId());
+
+        return new GetAccountInfoResponse(account.getId(), account.getDocumentNumber());
     }
 
     private static void validateDocumentNumber(String documentNumber) {
