@@ -16,7 +16,7 @@ public class Transactions {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id", nullable = false, updatable = false)
     private Integer id;
 

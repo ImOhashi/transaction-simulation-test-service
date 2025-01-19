@@ -1,5 +1,6 @@
 package com.ohashi.transaction_simulation_test_service.domain.services.impl;
 
+import com.ohashi.transaction_simulation_test_service.application.dtos.requests.CreateAccountDto;
 import com.ohashi.transaction_simulation_test_service.domain.entities.Accounts;
 import com.ohashi.transaction_simulation_test_service.domain.exceptions.AccountAlreadyExistsException;
 import com.ohashi.transaction_simulation_test_service.domain.exceptions.InvalidDocumentNumberException;
@@ -22,19 +23,23 @@ public class AccountsServiceImpl implements AccountsService {
     }
 
     @Override
-    public void createAccount(String documentNumber) {
-        logger.info("Attempting to create account with document number: {}", documentNumber);
-        accountsRepository.findByDocumentNumber(documentNumber).ifPresentOrElse(account -> {
-            logger.error("Account with document number {} already exists", documentNumber);
-            throw new AccountAlreadyExistsException("Account with document number " + documentNumber + " already exists");
+    public void createAccount(CreateAccountDto createAccountDto) {
+        logger.info("Attempting to create account with document number: {}", createAccountDto.documentNumber());
+        accountsRepository.findByDocumentNumber(createAccountDto.documentNumber()).ifPresentOrElse(account -> {
+            logger.error("Account with document number {} already exists", createAccountDto.documentNumber());
+            throw new AccountAlreadyExistsException("Account with document number " + createAccountDto.documentNumber() + " already exists");
         }, () -> {
-            validateDocumentNumber(documentNumber);
+            validateDocumentNumber(createAccountDto.documentNumber());
+
+            logger.info("Creating account with document number: {}", createAccountDto.documentNumber());
 
             var newAccount = new Accounts.Builder()
-                    .setDocumentNumber(documentNumber)
+                    .setDocumentNumber(createAccountDto.documentNumber())
                     .build();
 
             accountsRepository.save(newAccount);
+
+            logger.info("Account created with document number: {}", createAccountDto.documentNumber());
         });
     }
 

@@ -13,7 +13,7 @@ public class Accounts {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", nullable = false, updatable = false)
     private Integer id;
 
