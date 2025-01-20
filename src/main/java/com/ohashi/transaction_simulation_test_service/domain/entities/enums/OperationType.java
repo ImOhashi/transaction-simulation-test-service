@@ -1,18 +1,18 @@
 package com.ohashi.transaction_simulation_test_service.domain.entities.enums;
 
 public enum OperationType {
-    COMPRA_A_VISTA(1),
-    COMPRA_PARCELADA(2),
-    SAQUE(3),
-    PAGAMENTO(4);
+    COMPRA_A_VISTA("1"),
+    COMPRA_PARCELADA("2"),
+    SAQUE("3"),
+    PAGAMENTO("4");
 
-    private final int id;
+    private final String id;
 
-    OperationType(int id) {
+    OperationType(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }
