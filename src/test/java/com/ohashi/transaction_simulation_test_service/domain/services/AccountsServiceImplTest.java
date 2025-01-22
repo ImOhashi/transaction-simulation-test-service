@@ -9,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class AccountServiceImplTest {
+public class AccountsServiceImplTest {
 
     @Autowired
     private AccountsService accountsService;
