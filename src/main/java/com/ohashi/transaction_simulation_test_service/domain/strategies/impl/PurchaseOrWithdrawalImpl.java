@@ -4,7 +4,7 @@ import com.ohashi.transaction_simulation_test_service.domain.entities.Accounts;
 import com.ohashi.transaction_simulation_test_service.domain.entities.Transactions;
 import com.ohashi.transaction_simulation_test_service.domain.entities.enums.OperationType;
 import com.ohashi.transaction_simulation_test_service.domain.strategies.OperationStrategy;
-import com.ohashi.transaction_simulation_test_service.resources.TransactionsRepository;
+import com.ohashi.transaction_simulation_test_service.resources.repositories.TransactionsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

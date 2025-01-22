@@ -8,7 +8,7 @@ import com.ohashi.transaction_simulation_test_service.domain.exceptions.AccountN
 import com.ohashi.transaction_simulation_test_service.domain.exceptions.InvalidDocumentNumberException;
 import com.ohashi.transaction_simulation_test_service.domain.services.AccountsService;
 import com.ohashi.transaction_simulation_test_service.domain.utils.CpfValidator;
-import com.ohashi.transaction_simulation_test_service.resources.AccountsRepository;
+import com.ohashi.transaction_simulation_test_service.resources.repositories.AccountsRepository;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

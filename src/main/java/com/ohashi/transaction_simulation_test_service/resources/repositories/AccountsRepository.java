@@ -1,4 +1,4 @@
-package com.ohashi.transaction_simulation_test_service.resources;
+package com.ohashi.transaction_simulation_test_service.resources.repositories;
 
 import com.ohashi.transaction_simulation_test_service.domain.entities.Accounts;
 import org.springframework.data.jpa.repository.JpaRepository;
