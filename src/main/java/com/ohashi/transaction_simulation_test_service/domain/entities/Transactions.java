@@ -33,6 +33,17 @@ public class Transactions {
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
 
+    @Override
+    public String toString() {
+        return "Transactions{" +
+                "id=" + id +
+                ", account=" + account +
+                ", operationTypeId=" + operationTypeId +
+                ", amount=" + amount +
+                ", eventDate=" + eventDate +
+                '}';
+    }
+
     public static class Builder {
         private Accounts account;
         private Integer operationTypeId;

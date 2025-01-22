@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Component("payment")
-public class PaymentStrategyImpl implements OperationStrategy {
-
-    private static final Logger logger = LoggerFactory.getLogger(PaymentStrategyImpl.class);
+@Component("purchase")
+public class PurchaseOrWithdrawalImpl implements OperationStrategy {
+    private static final Logger logger = LoggerFactory.getLogger(PurchaseOrWithdrawalImpl.class);
 
     private final TransactionsRepository transactionsRepository;
 
-    public PaymentStrategyImpl(TransactionsRepository transactionsRepository) {
+    public PurchaseOrWithdrawalImpl(TransactionsRepository transactionsRepository) {
         this.transactionsRepository = transactionsRepository;
     }
 
@@ -29,7 +28,7 @@ public class PaymentStrategyImpl implements OperationStrategy {
         var newTransaction = new Transactions.Builder()
                 .setAccountId(account)
                 .setOperationTypeId(Integer.valueOf(operationType.getId()))
-                .setAmount(Math.abs(amount))
+                .setAmount(-Math.abs(amount))
                 .setEventDate(LocalDateTime.now())
                 .build();
 

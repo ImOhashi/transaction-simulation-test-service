@@ -33,7 +33,7 @@ spring:
     locations: classpath:db/migrations
     enabled: true
 
-### SWAGGER
+### Swagger
 springdoc:
   api-docs:
     path: /api-docs
@@ -41,7 +41,7 @@ springdoc:
     path: /docs
     operationsSorter: method
 
-### LOGGING
+### Logging
 logging:
   level:
     root: INFO
@@ -50,7 +50,7 @@ logging:
     com:
       example: TRACE
 
-### ACTUATOR
+### Actuator
 management:
   endpoint:
     health:
@@ -66,7 +66,7 @@ management:
     env:
       enabled: true
 
-### INFORMATION
+### Information
 info:
   app:
     name: "transaction-simulation-test-service"
