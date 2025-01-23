@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 @Table(name = "transactions")
 public class Transactions {
 
+    public Transactions() {
+    }
+
     private Transactions(Builder builder) {
         this.account = builder.account;
         this.operationTypeId = builder.operationTypeId;
