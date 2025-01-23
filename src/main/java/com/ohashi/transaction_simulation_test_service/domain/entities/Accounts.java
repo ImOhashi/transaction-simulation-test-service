@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "accounts")
 public class Accounts {
 
+    @PersistenceCreator
     public Accounts() {
     }
 
