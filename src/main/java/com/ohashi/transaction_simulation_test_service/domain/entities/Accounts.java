@@ -12,6 +12,12 @@ public class Accounts {
     public Accounts() {
     }
 
+    public Accounts(Integer id, String documentNumber, List<Transactions> transactions) {
+        this.id = id;
+        this.documentNumber = documentNumber;
+        this.transactions = transactions;
+    }
+
     private Accounts(Builder builder) {
         this.documentNumber = builder.documentNumber;
     }
