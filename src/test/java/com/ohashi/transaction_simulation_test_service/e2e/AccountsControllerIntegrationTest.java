@@ -85,7 +85,7 @@ public class AccountsControllerIntegrationTest {
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
 
-        boolean accountExists = accountsRepository.findByDocumentNumber(validCpf).isPresent();
+        var accountExists = accountsRepository.findByDocumentNumber(validCpf).isPresent();
 
         assertThat(accountExists).isTrue();
     }
